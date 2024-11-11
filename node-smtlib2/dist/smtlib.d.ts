@@ -1,0 +1,38 @@
+export declare type SNode = SExpr | string;
+declare class SExpr {
+    private _children;
+    constructor(...children: SNode[]);
+    toString(): string;
+}
+declare function SetLogic(logic: string): SExpr;
+declare function SetOption(opt: string, value?: SNode): SExpr;
+declare function DeclareDatatype(name: string, constructors: SNode[]): SExpr;
+declare function DeclareSort(name: string): SExpr;
+declare function DeclareFun(name: string, args: SNode[], ret: SNode): SExpr;
+declare function DefineFun(name: string, args: SNode[], ret: SNode, def: SNode): SExpr;
+declare function Assert(assert: SNode): SExpr;
+declare function AssertSoft(assert: SNode, weight: number, id: string): SExpr;
+declare function Predicate(pred: SNode, ...args: SNode[]): SNode;
+declare function Implies(lhs: SNode, rhs: SNode): SExpr;
+declare function If(conditional: SNode, iftrue: SNode, iffalse: SNode): SExpr;
+declare function And(...args: SNode[]): SNode;
+declare function BVAnd(...args: SNode[]): SNode;
+declare function Or(...args: SNode[]): SNode;
+declare function Not(expr: SNode): SExpr;
+declare function Eq(lhs: SNode, rhs: SNode): SExpr;
+declare function PbEq(clauses: SNode[], weights: number[], N: number): SExpr;
+declare function PbGe(clauses: SNode[], weights: number[], N: number): SExpr;
+declare function PbLe(clauses: SNode[], weights: number[], N: number): SExpr;
+declare function NEq(lhs: SNode, rhs: SNode): SExpr;
+declare function LEq(lhs: SNode, rhs: SNode): SExpr;
+declare function GEq(lhs: SNode, rhs: SNode): SExpr;
+declare function LT(lhs: SNode, rhs: SNode): SExpr;
+declare function GT(lhs: SNode, rhs: SNode): SExpr;
+declare function SetType(elementType: SNode): SExpr;
+declare function StringLiteral(str: string): SNode;
+declare function Named(name: SNode, expr: SNode): SExpr;
+declare function Maximize(term: SNode): SExpr;
+declare function Minimize(term: SNode): SExpr;
+declare function Sum(...args: SNode[]): SNode;
+declare function CheckSat(): SExpr;
+export { SExpr, SetLogic, SetOption, DeclareSort, DeclareDatatype, DeclareFun, DefineFun, Assert, AssertSoft, Predicate, Implies, And, BVAnd, Or, If, Not, Eq, PbEq, PbGe, PbLe, NEq, LEq, GEq, LT, GT, Named, SetType, StringLiteral, Maximize, Minimize, Sum, CheckSat };
